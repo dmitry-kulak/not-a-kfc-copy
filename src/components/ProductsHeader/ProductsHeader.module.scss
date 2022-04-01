@@ -22,6 +22,7 @@
 .inputContainer {
   display: flex;
   margin-right: 43px;
+  position: relative;
 }
 
 .inputLabel {
@@ -64,5 +65,27 @@
     background-color: mixins.$not-kfc-red;
     border-radius: 4px;
     color: white;
+  }
+}
+
+.errorTooltip {
+  position: absolute;
+  color: white;
+  background: black;
+  padding: 12px 12px;
+  border-radius: 8px;
+  width: max-content;
+  top: 150%;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    top: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color:  transparent  transparent black transparent;
+  
   }
 }

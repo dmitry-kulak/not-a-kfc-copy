@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FormikProps, FormikValues } from "formik";
 
 import styles from "./App.module.scss";
 
@@ -14,6 +15,8 @@ import { PageFooter } from "./components/PageFooter/PageFooter";
 export const App = () => {
   const dispatch = useAppDispatch();
 
+  const deliveryFormRef = React.useRef<FormikProps<FormikValues>>(null);
+
   useEffect(() => {
     dispatch(loadAllBurgers());
   });
@@ -21,9 +24,9 @@ export const App = () => {
   return (
     <>
       <div className={styles.topContent}>
-        <PageHeader />
+        <PageHeader deliveryFormRef={deliveryFormRef} />
 
-        <ProductsHeader />
+        <ProductsHeader deliveryFormRef={deliveryFormRef} />
       </div>
 
       <CategoryPanel />

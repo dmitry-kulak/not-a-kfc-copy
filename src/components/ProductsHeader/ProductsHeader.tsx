@@ -1,17 +1,16 @@
-import { Formik, Form } from "formik";
 import React from "react";
+import { FormikProps, FormikValues } from "formik";
 
 import styles from "./ProductsHeader.module.scss";
-import { AddressInput } from "./AdressInput";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { AddressForm } from "./AdressForm";
 import { setDeliveryOrPickup } from "../../store/slices/burgersSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
-const formInitialValues = {
-  street: "",
-  house: "",
+type ProductsHeaderProps = {
+  deliveryFormRef: React.RefObject<FormikProps<FormikValues>>;
 };
 
-export const ProductsHeader = () => {
+export const ProductsHeader = ({ deliveryFormRef }: ProductsHeaderProps) => {
   const deliveryOrPickup = useAppSelector(
     (state) => state.burgers.deliveryOrPickup
   );
@@ -30,19 +29,7 @@ export const ProductsHeader = () => {
     <header className={styles.header}>
       <div className={styles.leftSide}>
         {deliveryOrPickup === "delivery" && (
-          <>
-            <span className={styles.deliveryIn}>Доставка г. Москва</span>
-
-            <Formik
-              initialValues={formInitialValues}
-              onSubmit={() => console.log("address submitted")}
-            >
-              <Form className={styles.form}>
-                <AddressInput label="Улица" name="street" />
-                <AddressInput label="Дом" name="house" />
-              </Form>
-            </Formik>
-          </>
+          <AddressForm deliveryFormRef={deliveryFormRef} />
         )}
 
         {deliveryOrPickup === "pickup" && (
