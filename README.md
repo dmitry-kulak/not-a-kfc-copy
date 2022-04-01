@@ -1,4 +1,4 @@
-# not-a-fkc-copy
+# not-a-kfc-copy
 
 [Деплой](https://dk-mcdonalds.herokuapp.com/)
 
