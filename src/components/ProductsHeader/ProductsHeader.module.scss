@@ -5,6 +5,10 @@
   justify-content: space-between;
   margin-bottom: 60px;
   z-index: 42;
+
+  @media (max-width: 1024px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .deliveryIn,
@@ -13,16 +17,33 @@
   font-size: 64px;
   font-weight: 700;
   margin-bottom: 42px;
+
+  @media (max-width: 1024px) {
+    font-size: 52px;
+  }
 }
 
 .form {
   display: flex;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    width: fit-content;
+  }
 }
 
 .inputContainer {
   display: flex;
-  margin-right: 43px;
   position: relative;
+  margin-right: 42px;
+
+  @media (max-width: 1024px) {
+    margin-right: 0;
+
+    &:first-of-type {
+      margin-bottom: 20px;
+    }
+  }
 }
 
 .inputLabel {
@@ -40,6 +61,39 @@
   padding: 0 16px;
 }
 
+.errorTooltip {
+  position: absolute;
+  color: white;
+  background: black;
+  padding: 12px 12px;
+  border-radius: 8px;
+  width: max-content;
+  top: 150%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -35%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+
+  @media (max-width: 1024px) {
+    right: -125%;
+    top: -10%;
+    
+    &:before {
+      transform: unset;
+      left: -4%;
+      top: unset;
+      border-color: transparent black transparent transparent;
+    }
+  }
+}
+
 .buttons {
   display: flex;
   border-radius: 4px;
@@ -47,6 +101,10 @@
 
   height: 48px;
   width: fit-content;
+
+  @media (max-width: 1024px) {
+    align-self: flex-end;
+  }
 }
 
 .button {
@@ -65,27 +123,5 @@
     background-color: mixins.$not-kfc-red;
     border-radius: 4px;
     color: white;
-  }
-}
-
-.errorTooltip {
-  position: absolute;
-  color: white;
-  background: black;
-  padding: 12px 12px;
-  border-radius: 8px;
-  width: max-content;
-  top: 150%;
-  
-  &:before {
-    content: "";
-    position: absolute;
-    top: -35%;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 8px;
-    border-style: solid;
-    border-color:  transparent  transparent black transparent;
-  
   }
 }

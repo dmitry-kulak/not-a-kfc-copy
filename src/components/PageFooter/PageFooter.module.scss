@@ -20,13 +20,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  flex-wrap: wrap;
+  
   width: 100%;
   margin-bottom: 100px;
 }
 
 .list {
   list-style: none;
+  padding-inline-start: 0;
 }
 
 .listHeading {
@@ -56,6 +58,10 @@
   max-height: 227px;
   max-width: 227px;
   content: "";
+  
+  @media (max-width: 1024px) {
+    display: none;
+  }
 }
 
 .bottomSection {
@@ -66,6 +72,10 @@
 
   width: 100%;
   margin-bottom: 100px;
+  
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
 }
 
 .social {
@@ -77,8 +87,18 @@
     margin: 0 16px;
     cursor: pointer;
   }
+  
+  @media (max-width: 768px) {
+    position: static;
+    transform: none;
+    margin-bottom: 20px;
+  }
 }
 
 .storeBadges {
   margin-left: auto;
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }

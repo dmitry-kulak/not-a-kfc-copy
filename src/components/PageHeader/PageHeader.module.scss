@@ -37,17 +37,16 @@
 
   padding: 7px 12px;
   cursor: pointer;
-  
+
   svg {
     margin-left: 4px;
   }
-  
-  
+
   &:disabled {
     background: mixins.$grey-background;
     color: black;
     cursor: unset;
-    
+
     svg {
       path {
         fill: black;
