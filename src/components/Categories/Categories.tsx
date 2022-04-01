@@ -5,9 +5,9 @@ import { Category } from "../Category/Category";
 import { useAppSelector } from "../../store/hooks";
 
 export const Categories = () => {
-  const categories = useAppSelector((state) => state.burgers);
+  const allBurgers = useAppSelector((state) => state.burgers.allBurgers);
 
-  const renderedCategories = categories.map((category, index) => {
+  const renderedCategories = allBurgers.map((category, index) => {
     return <Category key={category.id} category={category} index={index + 1} />;
   });
 

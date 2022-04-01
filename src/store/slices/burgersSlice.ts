@@ -1,33 +1,25 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { getBurgers } from "../../api/burgers.api";
+import { getAllBurgers } from "../../api/burgers.api";
 import { CategoryType } from "../../types/burgersTypes";
 
 export type InitialState = {
-  burgers: CategoryType[];
+  allBurgers: CategoryType[];
   deliveryOrPickup: "delivery" | "pickup";
-  cart: {
-    total: number;
-    items: {
-      id: string;
-      quantity: number;
-    }[];
-  };
 };
 
 const initialState: InitialState = {
-  burgers: [],
-  cart: {
-    total: 0,
-    items: [],
-  },
+  allBurgers: [],
   deliveryOrPickup: "delivery",
 };
 
-export const loadBurgers = createAsyncThunk("burgers/loadBurgers", async () => {
-  const response = await getBurgers();
-  return response.data;
-});
+export const loadAllBurgers = createAsyncThunk(
+  "burgers/loadAllBurgers",
+  async () => {
+    const response = await getAllBurgers();
+    return response.data;
+  }
+);
 
 export const burgersSlice = createSlice({
   name: "burgers",
@@ -41,8 +33,8 @@ export const burgersSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(loadBurgers.fulfilled, (state, action) => {
-      state.burgers = action.payload;
+    builder.addCase(loadAllBurgers.fulfilled, (state, action) => {
+      state.allBurgers = action.payload;
     });
   },
 });

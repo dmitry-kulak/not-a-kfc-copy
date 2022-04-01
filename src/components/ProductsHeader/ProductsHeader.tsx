@@ -11,16 +11,10 @@ const formInitialValues = {
   house: "",
 };
 
-export const scrollToSection = (elementRef: React.Ref<any>) => {
-  window.scrollTo({
-    // @ts-ignore
-    top: elementRef.current.offsetTop,
-    behavior: "smooth",
-  });
-};
-
 export const ProductsHeader = () => {
-  const deliveryOrPickup = useAppSelector((state) => state.deliveryOrPickup);
+  const deliveryOrPickup = useAppSelector(
+    (state) => state.burgers.deliveryOrPickup
+  );
   const dispatch = useAppDispatch();
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

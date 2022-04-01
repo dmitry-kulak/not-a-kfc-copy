@@ -5,9 +5,9 @@ import styles from "./CategoryPanel.module.scss";
 import { useAppSelector } from "../../store/hooks";
 
 export const CategoryPanel = () => {
-  const categories = useAppSelector((state) => state.burgers);
+  const allBurgers = useAppSelector((state) => state.burgers.allBurgers);
 
-  const listOfCategories = categories.map((category) => {
+  const listOfCategories = allBurgers.map((category) => {
     return (
       <li key={category.id} className={styles.category}>
         <Link
