@@ -1,24 +1,50 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { getBurgers } from "../../api/burgers.api";
-import { Category } from "../../types/burgersTypes";
+import { CategoryType } from "../../types/burgersTypes";
 
-const loadBurgers = createAsyncThunk("burgers/loadBurgers", async () => {
+export type InitialState = {
+  burgers: CategoryType[];
+  deliveryOrPickup: "delivery" | "pickup";
+  cart: {
+    total: number;
+    items: {
+      id: string;
+      quantity: number;
+    }[];
+  };
+};
+
+const initialState: InitialState = {
+  burgers: [],
+  cart: {
+    total: 0,
+    items: [],
+  },
+  deliveryOrPickup: "delivery",
+};
+
+export const loadBurgers = createAsyncThunk("burgers/loadBurgers", async () => {
   const response = await getBurgers();
   return response.data;
 });
 
-const initialState: { burgers: Category[] } = {
-  burgers: [],
-};
-
 export const burgersSlice = createSlice({
   name: "burgers",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    setDeliveryOrPickup: (
+      state,
+      action: PayloadAction<"delivery" | "pickup">
+    ) => {
+      state.deliveryOrPickup = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(loadBurgers.fulfilled, (state, action) => {
       state.burgers = action.payload;
     });
   },
 });
+
+export const { setDeliveryOrPickup } = burgersSlice.actions;

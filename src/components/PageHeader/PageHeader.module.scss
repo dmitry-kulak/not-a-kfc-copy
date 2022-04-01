@@ -1,0 +1,36 @@
+@use "/src/utils/mixins" as mixins;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 88px;
+}
+
+.logo {
+  align-self: flex-start;
+}
+
+.burgerMenuButton {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.cartButton {
+  display: flex;
+  align-items: center;
+
+  background: mixins.$not-kfc-red;
+  border: none;
+  border-radius: 18px;
+
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+
+  padding: 7px 12px;
+  cursor: pointer;
+}

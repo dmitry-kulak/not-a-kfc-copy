@@ -1,5 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import styles from "./App.module.scss";
+
+import { Categories } from "./components/Categories/Categories";
+import { CategoryPanel } from "./components/CategoryPanel/CategoryPanel";
+import { PageHeader } from "./components/PageHeader/PageHeader";
+import { ProductsHeader } from "./components/ProductsHeader/ProductsHeader";
+
+import { loadBurgers } from "./store/slices/burgersSlice";
+import { useAppDispatch } from "./store/hooks";
+import { PageFooter } from "./components/PageFooter/PageFooter";
 
 export const App = () => {
-  return <div>App</div>;
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadBurgers());
+  });
+
+  return (
+    <>
+      <div className={styles.topContent}>
+        <PageHeader />
+
+        <ProductsHeader />
+      </div>
+
+      <CategoryPanel />
+
+      <Categories />
+
+      <PageFooter />
+    </>
+  );
 };

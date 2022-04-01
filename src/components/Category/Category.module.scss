@@ -1,0 +1,25 @@
+@use "/src/utils/mixins" as mixins;
+
+.oddCategory {
+  background: mixins.$grey-background;
+}
+
+.content {
+  @include mixins.content;
+}
+
+.name {
+  display: block;
+  font-size: 32px;
+  padding-top: 38px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 288px));
+  grid-auto-rows: minmax(270px, 360px);
+  grid-gap: 32px;
+
+  padding-top: 28px;
+  padding-bottom: 40px;
+}

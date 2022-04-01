@@ -1,0 +1,84 @@
+@use "/src/utils/mixins" as mixins;
+
+.container {
+  @include mixins.content;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topSection {
+  margin-bottom: 80px;
+}
+
+.logo {
+  width: 160px;
+}
+
+.middleSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.list {
+  list-style: none;
+}
+
+.listHeading {
+  display: block;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.listItem {
+  font-size: 16px;
+  margin-bottom: 22px;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+.leCircle {
+  display: block;
+  background-color: mixins.$grey-background;
+  border-radius: 50%;
+
+  height: 100vh;
+  width: 100vw;
+  max-height: 227px;
+  max-width: 227px;
+  content: "";
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.social {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &Icon {
+    margin: 0 16px;
+    cursor: pointer;
+  }
+}
+
+.storeBadges {
+  margin-left: auto;
+}

@@ -1,0 +1,37 @@
+@use "/src/utils/mixins" as mixins;
+
+.oddContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    background-color: white;
+  }
+}
+
+.evenContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    background-color: mixins.$grey-background;
+  }
+}
+
+.image {
+  margin-top: 34px;
+}
+
+.name {
+  font-size: 24px;
+}
+
+.price {
+  font-size: 32px;
+  color: mixins.$not-kfc-red;
+  margin-bottom: 15px;
+}

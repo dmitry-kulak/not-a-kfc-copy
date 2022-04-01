@@ -1,6 +1,6 @@
 import { instance } from "./api";
-import { Category } from "../types/burgersTypes";
+import { CategoryType } from "../types/burgersTypes";
 
 export const getBurgers = () => {
-  return instance.get<Category[]>("api/burgers");
+  return instance.get<CategoryType[]>("api/burgers");
 };

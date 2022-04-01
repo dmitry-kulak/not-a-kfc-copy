@@ -1,0 +1,10 @@
+$not-kfc-red: #e4002b;
+$grey-background: #f7f6f5;
+
+// poor naming
+@mixin content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 93px;
+  box-sizing: border-box;
+}

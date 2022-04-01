@@ -1,0 +1,66 @@
+@use "/src/utils/mixins" as mixins;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.deliveryIn, .pickupIn {
+  display: block;
+  font-size: 64px;
+  font-weight: 700;
+  margin-bottom: 42px;
+}
+
+.form {
+  display: flex;
+}
+
+.inputContainer {
+  display: flex;
+  margin-right: 43px;
+}
+
+.inputLabel {
+  font-size: 32px;
+  margin-right: 10px;
+}
+
+.input {
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f7f6f5;
+  outline: none;
+
+  padding: 0 16px;
+}
+
+.buttons {
+  display: flex;
+  border-radius: 4px;
+  background-color: #f7f6f5;
+
+  height: 48px;
+  width: fit-content;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+
+  color: #9d9d9d;
+  font-size: 16px;
+  font-family: sans-serif;
+
+  padding: 12px 17px;
+
+  cursor: pointer;
+
+  &Active {
+    background-color: mixins.$not-kfc-red;
+    border-radius: 4px;
+    color: white;
+  }
+}

@@ -1,6 +1,6 @@
-import { Category } from "../src/types/burgersTypes";
+import { CategoryType } from "../src/types/burgersTypes";
 
-export const burgers: Category[] = [
+export const burgers: CategoryType[] = [
   {
     id: "burgers",
     name: "Бургеры",
@@ -68,7 +68,7 @@ export const burgers: Category[] = [
         delivery: true,
       },
       {
-        id: "twister-4",
+        id: "twister-2",
         name: "Твистер",
         price: 144,
         img: "/images/twister.png",
@@ -116,7 +116,7 @@ export const burgers: Category[] = [
         delivery: true,
       },
       {
-        id: "threeStrips-1",
+        id: "threeStrips-4",
         name: "3 Стрипса",
         price: 144,
         img: "/images/threeStrips.png",

@@ -1,0 +1,34 @@
+@use "/src/utils/mixins" as mixins;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.content {
+  @include mixins.content;
+}
+
+.categories {
+  display: flex;
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+.category {
+  margin-right: 28px;
+  padding: 14px 0;
+
+  cursor: pointer;
+  color: #9d9d9d;
+  font-size: 18px;
+
+  &Active {
+    color: mixins.$not-kfc-red;
+    border-bottom: 2px solid mixins.$not-kfc-red;
+    padding: 14px 0;
+  }
+}
