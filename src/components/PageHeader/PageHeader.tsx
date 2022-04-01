@@ -13,10 +13,14 @@ type PageHeaderProps = {
 };
 
 export const PageHeader = ({ deliveryFormRef }: PageHeaderProps) => {
-  const cart = useAppSelector((state) => state.cart);
+  const { cart, burgers } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
 
   const handleClick = async () => {
+    if (burgers.deliveryOrPickup === "pickup") {
+      dispatch(submitCart(cart));
+    }
+
     if (deliveryFormRef.current) {
       await deliveryFormRef.current.validateForm();
       if (deliveryFormRef.current.isValid) {
