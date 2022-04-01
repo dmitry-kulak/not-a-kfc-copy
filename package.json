@@ -28,11 +28,8 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start:prod": "react-scripts build && cd ./server && tsc && cd ../build/server/server && node server.js",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "cd ./build/server/server && node server.js",
+    "heroku-postbuild": "react-scripts build && cd ./server && tsc"
   },
   "eslintConfig": {
     "extends": [
@@ -59,9 +56,9 @@
     "prettier": "^2.6.1",
     "ts-node-dev": "^1.1.8"
   },
-  "proxy": "http://localhost:3001",
   "engines": {
     "node": "17.x",
-    "npm": "8.x"
+    "npm": "8.x",
+    "yarn": "1.x"
   }
 }
