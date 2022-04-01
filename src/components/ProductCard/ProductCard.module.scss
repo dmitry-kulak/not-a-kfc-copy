@@ -1,10 +1,15 @@
 @use "/src/utils/mixins" as mixins;
 
-.oddContainer {
+@mixin container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+}
+
+.oddContainer {
+  @include container;
 
   &:hover {
     background-color: white;
@@ -12,18 +17,60 @@
 }
 
 .evenContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  @include container;
 
   &:hover {
     background-color: mixins.$grey-background;
   }
 }
 
-.image {
+.imageContainer {
   margin-top: 34px;
+  position: relative;
+}
+
+.singleAddButton {
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  border-radius: 20px;
+  padding: 6px;
+  
+  color: white;
+  
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  
+  .addButton, .removeButton {
+    background: none;
+    border: none;
+  
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.multipleButtons {
+  background: black;
+}
+
+.productsInCard {
+  margin: 0 10px;
+  font-size: 20px;
 }
 
 .name {

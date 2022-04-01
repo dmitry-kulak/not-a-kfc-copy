@@ -4,22 +4,27 @@ import styles from "./Category.module.scss";
 import type { CategoryType } from "../../types/burgersTypes";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { isOdd } from "../../utils/isOdd";
+import { useAppSelector } from "../../store/hooks";
 
 type CategoryProps = {
-  category: CategoryType;
+  categoryId: string;
   index: number;
 };
 
-export const Category = ({ category, index }: CategoryProps) => {
+export const Category = ({ categoryId, index }: CategoryProps) => {
+  const { allBurgers, deliveryOrPickup } = useAppSelector(
+    (state) => state.burgers
+  );
+  const category = allBurgers.find(
+    (category: CategoryType) => category.id === categoryId
+  )!;
   const isCategoryOdd = isOdd(index);
 
   const products = category.products.map((product) => (
     <ProductCard
       key={product.id}
-      name={product.name}
-      img={product.img}
-      price={product.price}
-      canBeDelivered={product.delivery}
+      product={product}
+      deliveryOrPickup={deliveryOrPickup}
       isCategoryOdd={isCategoryOdd}
     />
   ));

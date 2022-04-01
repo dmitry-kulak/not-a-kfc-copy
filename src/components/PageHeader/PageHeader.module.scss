@@ -6,10 +6,14 @@
   align-items: center;
 
   height: 88px;
+  position: relative;
 }
 
 .logo {
-  align-self: flex-start;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
 }
 
 .burgerMenuButton {

@@ -25,18 +25,42 @@ export const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action: PayloadAction<ProductType>) => {
       state.total += action.payload.price;
-      state.items.push(action.payload);
+
+      const item = state.items.find(
+        (item) => item.item.id === action.payload.id
+      );
+
+      if (item) {
+        item.quantity += 1;
+      } else {
+        state.items.push({
+          item: action.payload,
+          quantity: 1,
+        });
+      }
     },
     removeFromCart: (state, action: PayloadAction<ProductType>) => {
       state.total -= action.payload.price;
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+
+      const item = state.items.find(
+        (item) => item.item.id === action.payload.id
+      );
+
+      if (item) {
+        item.quantity -= 1;
+        if (item.quantity === 0) {
+          state.items = state.items.filter(
+            (item) => item.item.id !== action.payload.id
+          );
+        }
+      }
     },
   },
 
   extraReducers: (builder) => {
     builder.addCase(submitCart.fulfilled, (state, action) => {
       console.log(action.payload);
-      state = initialState;
+      return initialState;
     });
   },
 });

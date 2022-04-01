@@ -7,8 +7,12 @@ import { useAppSelector } from "../../store/hooks";
 export const Categories = () => {
   const allBurgers = useAppSelector((state) => state.burgers.allBurgers);
 
-  const renderedCategories = allBurgers.map((category, index) => {
-    return <Category key={category.id} category={category} index={index + 1} />;
+  const categoryIds = allBurgers.map((burger) => burger.id);
+
+  const renderedCategories = categoryIds.map((categoryId, index) => {
+    return (
+      <Category key={categoryId} categoryId={categoryId} index={index + 1} />
+    );
   });
 
   return (
