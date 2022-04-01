@@ -4,7 +4,9 @@
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
+    "outDir": "../build/server"
   },
-  "include": ["server.ts"]
+  "include": ["server.ts", "burgers.ts"]
 }

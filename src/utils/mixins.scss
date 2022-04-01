@@ -7,10 +7,9 @@ $grey-background: #f7f6f5;
   margin: 0 auto;
   padding: 0 93px;
   box-sizing: border-box;
-  
+
   @media (max-width: 1440px) {
     max-width: unset;
     padding: 0 40px;
-  
   }
 }
