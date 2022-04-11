@@ -7,15 +7,10 @@ import { addToCart, removeFromCart } from "../../store/slices/cartSlice";
 
 type ProductCardProps = {
   product: ProductType;
-  deliveryOrPickup: "delivery" | "pickup";
   isCategoryOdd: boolean;
 };
 
-export const ProductCard = ({
-  product,
-  deliveryOrPickup,
-  isCategoryOdd,
-}: ProductCardProps) => {
+export const ProductCard = ({ product, isCategoryOdd }: ProductCardProps) => {
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
@@ -31,37 +26,29 @@ export const ProductCard = ({
     cart.items.find((item) => item.item.id === product.id)?.quantity || 0;
 
   const renderAddButtons = (productsInCart: number) => {
-    if (
-      (deliveryOrPickup === "delivery" && product.delivery) ||
-      deliveryOrPickup === "pickup"
-    ) {
-      if (productsInCart === 0) {
-        return (
-          <div className={styles.buttons}>
-            <button
-              className={styles.singleAddButton}
-              onClick={addProductToCart}
-            >
-              +
-            </button>
-          </div>
-        );
-      } else {
-        return (
-          <div className={`${styles.buttons} ${styles.multipleButtons}`}>
-            <button
-              className={styles.removeButton}
-              onClick={removeProductFromCard}
-            >
-              –
-            </button>
-            <span className={styles.productsInCard}>{productsInCart}</span>
-            <button className={styles.addButton} onClick={addProductToCart}>
-              +
-            </button>
-          </div>
-        );
-      }
+    if (productsInCart === 0) {
+      return (
+        <div className={styles.buttons}>
+          <button className={styles.singleAddButton} onClick={addProductToCart}>
+            +
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <div className={`${styles.buttons} ${styles.multipleButtons}`}>
+          <button
+            className={styles.removeButton}
+            onClick={removeProductFromCard}
+          >
+            –
+          </button>
+          <span className={styles.productsInCard}>{productsInCart}</span>
+          <button className={styles.addButton} onClick={addProductToCart}>
+            +
+          </button>
+        </div>
+      );
     }
   };
 

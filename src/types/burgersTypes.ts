@@ -11,3 +11,5 @@ export type CategoryType = {
   name: string;
   products: ProductType[];
 };
+
+export type DeliveryOrPickup = "delivery" | "pickup";

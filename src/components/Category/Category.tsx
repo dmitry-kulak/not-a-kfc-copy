@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./Category.module.scss";
-import type { CategoryType } from "../../types/burgersTypes";
+import type { CategoryType, DeliveryOrPickup } from "../../types/burgersTypes";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { isOdd } from "../../utils/isOdd";
 import { useAppSelector } from "../../store/hooks";
@@ -11,20 +11,35 @@ type CategoryProps = {
   index: number;
 };
 
+const getCategory = (allBurgers: CategoryType[], categoryId: string) => {
+  return allBurgers.find((category) => category.id === categoryId)!;
+};
+
+const filterProducts = (
+  category: CategoryType,
+  deliveryOrPickup: DeliveryOrPickup
+) => {
+  switch (deliveryOrPickup) {
+    case "delivery":
+      return category.products.filter((product) => product.delivery);
+
+    case "pickup":
+      return category.products;
+  }
+};
+
 export const Category = ({ categoryId, index }: CategoryProps) => {
   const { allBurgers, deliveryOrPickup } = useAppSelector(
     (state) => state.burgers
   );
-  const category = allBurgers.find(
-    (category: CategoryType) => category.id === categoryId
-  )!;
+  const category = getCategory(allBurgers, categoryId);
+  const filteredProducts = filterProducts(category, deliveryOrPickup);
   const isCategoryOdd = isOdd(index);
 
-  const products = category.products.map((product) => (
+  const products = filteredProducts.map((product) => (
     <ProductCard
       key={product.id}
       product={product}
-      deliveryOrPickup={deliveryOrPickup}
       isCategoryOdd={isCategoryOdd}
     />
   ));

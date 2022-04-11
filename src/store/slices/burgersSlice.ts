@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { getAllBurgers } from "../../api/burgers.api";
-import { CategoryType } from "../../types/burgersTypes";
+import type { CategoryType, DeliveryOrPickup } from "../../types/burgersTypes";
 
 export type InitialState = {
   allBurgers: CategoryType[];
-  deliveryOrPickup: "delivery" | "pickup";
+  deliveryOrPickup: DeliveryOrPickup;
 };
 
 const initialState: InitialState = {
