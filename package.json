@@ -29,6 +29,8 @@
   },
   "scripts": {
     "start": "cd ./build/server/server && node server.js",
+    "start:backend": "cd ./server && ts-node-dev server.ts",
+    "start:dev": "concurrently \"yarn start:backend\"  \"react-scripts start\"",
     "heroku-postbuild": "react-scripts build && cd ./server && tsc"
   },
   "eslintConfig": {
@@ -60,5 +62,6 @@
     "node": "17.x",
     "npm": "8.x",
     "yarn": "1.x"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
