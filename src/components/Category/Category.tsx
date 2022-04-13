@@ -3,12 +3,11 @@ import React from "react";
 import styles from "./Category.module.scss";
 import type { CategoryType, DeliveryOrPickup } from "../../types/burgersTypes";
 import { ProductCard } from "../ProductCard/ProductCard";
-import { isOdd } from "../../utils/isOdd";
 import { useAppSelector } from "../../store/hooks";
 
 type CategoryProps = {
   categoryId: string;
-  index: number;
+  isCategoryOdd: boolean;
 };
 
 const getCategory = (allBurgers: CategoryType[], categoryId: string) => {
@@ -28,13 +27,12 @@ const filterProducts = (
   }
 };
 
-export const Category = ({ categoryId, index }: CategoryProps) => {
+export const Category = ({ categoryId, isCategoryOdd }: CategoryProps) => {
   const { allBurgers, deliveryOrPickup } = useAppSelector(
     (state) => state.burgers
   );
   const category = getCategory(allBurgers, categoryId);
   const filteredProducts = filterProducts(category, deliveryOrPickup);
-  const isCategoryOdd = isOdd(index);
 
   const products = filteredProducts.map((product) => (
     <ProductCard

@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./Categories.module.scss";
 import { Category } from "../Category/Category";
 import { useAppSelector } from "../../store/hooks";
+import { isOdd } from "../../utils/isOdd";
 
 export const Categories = () => {
   const allBurgers = useAppSelector((state) => state.burgers.allBurgers);
@@ -11,7 +12,11 @@ export const Categories = () => {
 
   const renderedCategories = categoryIds.map((categoryId, index) => {
     return (
-      <Category key={categoryId} categoryId={categoryId} index={index + 1} />
+      <Category
+        key={categoryId}
+        categoryId={categoryId}
+        isCategoryOdd={isOdd(index)}
+      />
     );
   });
 
