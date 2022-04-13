@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Cart } from "../../types/cartTypes";
+import type { Cart } from "../../types/cartTypes";
+import type { DeliveryOrPickup, ProductType } from "../../types/burgersTypes";
 import { postCart } from "../../api/burgers.api";
-import { ProductType } from "../../types/burgersTypes";
 
 type InitialState = Cart;
 
@@ -55,6 +55,17 @@ export const cartSlice = createSlice({
         }
       }
     },
+    filterCart: (state, action: PayloadAction<DeliveryOrPickup>) => {
+      switch (action.payload) {
+        case "delivery":
+          state.items = state.items.filter((item) => item.item.delivery);
+          state.total = state.items.reduce(
+            (prevItem, currItem) =>
+              prevItem + currItem.quantity * currItem.item.price,
+            0
+          );
+      }
+    },
   },
 
   extraReducers: (builder) => {
@@ -65,4 +76,4 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, filterCart } = cartSlice.actions;

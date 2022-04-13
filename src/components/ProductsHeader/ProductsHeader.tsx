@@ -5,6 +5,7 @@ import styles from "./ProductsHeader.module.scss";
 import { AddressForm } from "./AdressForm";
 import { setDeliveryOrPickup } from "../../store/slices/burgersSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { filterCart } from "../../store/slices/cartSlice";
 
 type ProductsHeaderProps = {
   deliveryFormRef: React.RefObject<FormikProps<FormikValues>>;
@@ -22,6 +23,7 @@ export const ProductsHeader = ({ deliveryFormRef }: ProductsHeaderProps) => {
       | "pickup";
     if (dataAttr !== deliveryOrPickup) {
       dispatch(setDeliveryOrPickup(dataAttr));
+      dispatch(filterCart(dataAttr));
     }
   };
 
