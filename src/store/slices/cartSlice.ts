@@ -64,6 +64,11 @@ export const cartSlice = createSlice({
               prevItem + currItem.quantity * currItem.item.price,
             0
           );
+          break;
+
+        case "pickup":
+        default:
+          return state;
       }
     },
   },
